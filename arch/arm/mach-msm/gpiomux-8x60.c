@@ -62,7 +62,7 @@ static struct gpiomux_setting gsbi8 = {
 	.drv = GPIOMUX_DRV_2MA,
 	.pull = GPIOMUX_PULL_NONE,
 };
-#if defined(CONFIG_MACH_VILLEC2)
+#if defined(CONFIG_MACH_PYRAMID)
 static struct gpiomux_setting i2c_active_gsbi12 = {
 	.func = GPIOMUX_FUNC_2,
 	.drv = GPIOMUX_DRV_8MA,
@@ -230,7 +230,7 @@ static struct gpiomux_setting aux_pcm_suspend_config = {
 	.pull = GPIOMUX_PULL_NONE,
 };
 
-#if defined(CONFIG_MACH_VILLEC2)
+#if defined(CONFIG_MACH_PYRAMID)
 static struct gpiomux_setting rx_i2s_active_config = {
 	.func = GPIOMUX_FUNC_1,
 	.drv = GPIOMUX_DRV_2MA,
@@ -470,7 +470,7 @@ static struct gpiomux_setting mdm2ap_vddmin_suspend_cfg = {
 };
 
 static struct msm_gpiomux_config msm8x60_gsbi_configs[] __initdata = {
-#if !(defined(CONFIG_MACH_VILLEC2))
+#if !(defined(CONFIG_MACH_PYRAMID))
 	{
 		.gpio      = 33,
 		.settings = {
@@ -507,7 +507,7 @@ static struct msm_gpiomux_config msm8x60_gsbi_configs[] __initdata = {
 			[GPIOMUX_ACTIVE]    = &i2c_active,
 		},
 	},
-#if !(defined(CONFIG_MACH_VILLEC2))
+#if !(defined(CONFIG_MACH_PYRAMID))
 	{
 		.gpio      = 44,
 		.settings = {
@@ -556,7 +556,7 @@ static struct msm_gpiomux_config msm8x60_gsbi_configs[] __initdata = {
 			[GPIOMUX_SUSPENDED] = &gsbi8,
 		},
 	},
-#if defined(CONFIG_MACH_VILLEC2)
+#if defined(CONFIG_MACH_PYRAMID)
 	{
 		.gpio      = 115,
 		.settings = {
@@ -942,7 +942,7 @@ static struct msm_gpiomux_config msm8x60_aux_pcm_configs[] __initdata = {
 	},
 };
 
-#if defined(CONFIG_MACH_VILLEC2)
+#if defined(CONFIG_MACH_PYRAMID)
 static struct msm_gpiomux_config msm8x60_rx_i2s_configs[] __initdata = {
 	{
 		.gpio = 119,
@@ -1695,7 +1695,7 @@ static struct msm_gpiomux_config msm8x60_charm_configs[] __initdata = {
 };
 
 struct msm_gpiomux_configs
-msm8x60_villec2_gpiomux_cfgs[] __initdata = {
+msm8x60_pyramid_gpiomux_cfgs[] __initdata = {
 	{msm8x60_gsbi_configs, ARRAY_SIZE(msm8x60_gsbi_configs)},
 	{msm8x60_uart_configs, ARRAY_SIZE(msm8x60_uart_configs)},
 #ifdef CONFIG_MSM_GSBI9_UART
@@ -1705,7 +1705,7 @@ msm8x60_villec2_gpiomux_cfgs[] __initdata = {
 	{msm8x60_isp_usb_configs, ARRAY_SIZE(msm8x60_isp_usb_configs)},
 #endif
 	{msm8x60_aux_pcm_configs, ARRAY_SIZE(msm8x60_aux_pcm_configs)},
-#if defined(CONFIG_MACH_VILLEC2)
+#if defined(CONFIG_MACH_PYRAMID)
 	{msm8x60_rx_i2s_configs, ARRAY_SIZE(msm8x60_rx_i2s_configs)},
 #endif
 	{msm8x60_sdc_configs, ARRAY_SIZE(msm8x60_sdc_configs)},

@@ -24,7 +24,7 @@
 #include <mach/qdsp6v2/audio_dev_ctl.h>
 #include <sound/apr_audio.h>
 #include <sound/q6afe.h>
-#include "snddev_ecodec.h"
+#include <mach/qdsp6v2/snddev_ecodec.h>
 
 #define ECODEC_SAMPLE_RATE 8000
 

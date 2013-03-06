@@ -22,9 +22,9 @@
 
 #include <mach/gpio.h>
 #include <mach/dal.h>
-#include "qdsp6v2/snddev_icodec.h"
-#include "qdsp6v2/snddev_ecodec.h"
-#include "qdsp6v2/snddev_hdmi.h"
+#include <mach/qdsp6v2/snddev_icodec.h>
+#include <mach/qdsp6v2/snddev_ecodec.h>
+#include <mach/qdsp6v2/snddev_hdmi.h>
 #include <mach/qdsp6v2/audio_dev_ctl.h>
 #include <sound/apr_audio.h>
 #include <sound/q6asm.h>

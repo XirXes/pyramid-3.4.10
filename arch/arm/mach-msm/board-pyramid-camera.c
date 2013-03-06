@@ -636,7 +636,7 @@ static int camera_sensor_power_disable(struct regulator *sensor_power)
 }
 
 #ifdef CONFIG_S5K3H2YX
-static int Villec2_s5k3h2yx_vreg_on(void)
+static int Pyramid_s5k3h2yx_vreg_on(void)
 {
 	int rc = 0;
 	pr_info("%s\n", __func__);
@@ -645,7 +645,7 @@ static int Villec2_s5k3h2yx_vreg_on(void)
 
 }
 
-static int Villec2_s5k3h2yx_vreg_off(void)
+static int Pyramid_s5k3h2yx_vreg_off(void)
 {
 	int rc = 0;
 
@@ -804,8 +804,8 @@ static struct msm_camera_sensor_flash_data flash_s5k3h2yx = {
 
 static struct msm_camera_sensor_info msm_camera_sensor_s5k3h2yx_data = {
 	.sensor_name	= "s5k3h2yx",
-	.camera_power_on = Villec2_s5k3h2yx_vreg_on,
-	.camera_power_off = Villec2_s5k3h2yx_vreg_off,
+	.camera_power_on = Pyramid_s5k3h2yx_vreg_on,
+	.camera_power_off = Pyramid_s5k3h2yx_vreg_off,
 	.pdata	= &msm_camera_csi_device_data[0],
 	.flash_data	= &flash_s5k3h2yx,
 	.sensor_platform_info = &sensor_s5k3h2yx_board_info,
@@ -848,7 +848,7 @@ static void pyramid_config_camera_off_gpios(void)
 		ARRAY_SIZE(camera_off_gpio_table));
 }
 
-static int Villec2_mt9v113_vreg_on(void)
+static int Pyramid_mt9v113_vreg_on(void)
 {
 	int rc = 0;
 
@@ -919,7 +919,7 @@ init_fail:
 	return rc;
 }
 
-static int Villec2_mt9v113_vreg_off(void)
+static int Pyramid_mt9v113_vreg_off(void)
 {
 	int rc = 0;
 
@@ -1007,8 +1007,8 @@ static struct msm_camera_sensor_flash_data flash_mt9v113 = {
 static struct msm_camera_sensor_info msm_camera_sensor_mt9v113_data = {
 	.sensor_name	= "mt9v113",
 	.sensor_reset	= PYRAMID_GPIO_CAM2_RSTz,
-	.camera_power_on = Villec2_mt9v113_vreg_on,
-	.camera_power_off = Villec2_mt9v113_vreg_off,
+	.camera_power_on = Pyramid_mt9v113_vreg_on,
+	.camera_power_off = Pyramid_mt9v113_vreg_off,
 	.pdata	= &msm_camera_csi_device_data[1],
 	.flash_data	= &flash_mt9v113,
 	.sensor_platform_info = &sensor_mt9v113_board_info,

@@ -243,7 +243,7 @@ acoustic_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 					(struct adie_codec_action_unit *)
 					(htc_adie_table + action_offset);
 
-					if (act_info.setting == VOICE_SETTING) {
+/*					if (act_info.setting == VOICE_SETTING) {
 						D("Update adie (voice) of %s\n", dev_info->name);
 						entry[j].voc_action = htc_adie_ptr;
 						entry[j].voc_action_sz = act_info.act_sz;
@@ -253,7 +253,7 @@ acoustic_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 						entry[j].midi_action_sz = act_info.act_sz;
 						entry[j].actions = htc_adie_ptr;
 						entry[j].action_sz = act_info.act_sz;
-						}
+						}*/
 
 						break;
 				}
@@ -467,10 +467,10 @@ acoustic_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 		}
 		break;
 	}
-	case ACOUSTIC_SET_WB_SAMPLE_RATE: {
+/*	case ACOUSTIC_SET_WB_SAMPLE_RATE: {
 		msm_set_voc_freq(16000, 16000);
 		break;
-	}
+	}*/
 	case ACOUSTIC_GET_SPEAKER_CHANNELS: {
 
 		int channel = 2;

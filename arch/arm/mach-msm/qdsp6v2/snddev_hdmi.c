@@ -22,7 +22,7 @@
 #include <mach/debug_mm.h>
 #include <sound/q6afe.h>
 #include <sound/apr_audio.h>
-#include "snddev_hdmi.h"
+#include <mach/qdsp6v2/snddev_hdmi.h>
 
 #ifdef CONFIG_MACH_PYRAMID
 #undef pr_info
