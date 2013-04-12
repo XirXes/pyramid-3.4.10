@@ -309,9 +309,9 @@ static struct regulator *pyramid_reg_8058_l8 = NULL;
 static struct regulator *pyramid_reg_8058_l9 = NULL;
 static struct regulator *pyramid_reg_8058_l14 = NULL;
 static struct regulator *pyramid_reg_8058_l15 = NULL;
-static struct regulator *votg_2_8v_switch = NULL;
 
 #ifdef CONFIG_RAWCHIP
+static struct regulator *votg_2_8v_switch = NULL;
 static int pyramid_use_ext_1v2(void)
 {
 	return 0;
@@ -635,8 +635,8 @@ static int camera_sensor_power_disable(struct regulator *sensor_power)
 	return rc;
 }
 
-#ifdef CONFIG_S5K3H2YX
-static int Pyramid_s5k3h2yx_vreg_on(void)
+#ifdef CONFIG_s5k3h1gx
+static int Pyramid_s5k3h1gx_vreg_on(void)
 {
 	int rc = 0;
 	pr_info("%s\n", __func__);
@@ -645,7 +645,7 @@ static int Pyramid_s5k3h2yx_vreg_on(void)
 
 }
 
-static int Pyramid_s5k3h2yx_vreg_off(void)
+static int Pyramid_s5k3h1gx_vreg_off(void)
 {
 	int rc = 0;
 
@@ -654,19 +654,19 @@ static int Pyramid_s5k3h2yx_vreg_off(void)
 	return rc;
 }
 
-#ifdef CONFIG_S5K3H2YX_ACT
-static struct i2c_board_info s5k3h2yx_actuator_i2c_info = {
-	I2C_BOARD_INFO("s5k3h2yx_act", 0x11),
+#ifdef CONFIG_s5k3h1gx_ACT
+static struct i2c_board_info s5k3h1gx_actuator_i2c_info = {
+	I2C_BOARD_INFO("s5k3h1gx_act", 0x11),
 };
 
-static struct msm_actuator_info s5k3h2yx_actuator_info = {
-	.board_info     = &s5k3h2yx_actuator_i2c_info,
+static struct msm_actuator_info s5k3h1gx_actuator_info = {
+	.board_info     = &s5k3h1gx_actuator_i2c_info,
 	.bus_id         = MSM_GSBI4_QUP_I2C_BUS_ID,
 	.vcm_pwd        = PYRAMID_GPIO_CAM_VCM_PD,
 	.vcm_enable     = 1,
 };
 #endif
-static struct msm_camera_sensor_platform_info sensor_s5k3h2yx_board_info = {
+static struct msm_camera_sensor_platform_info sensor_s5k3h1gx_board_info = {
 	.mount_angle = 90,
 	.mirror_flip = CAMERA_SENSOR_NONE,
 	.sensor_reset_enable = 0,
@@ -676,7 +676,7 @@ static struct msm_camera_sensor_platform_info sensor_s5k3h2yx_board_info = {
 	.vcm_enable	= 1,
 };
 
-static struct camera_led_est msm_camera_sensor_s5k3h2yx_led_table[] = {
+static struct camera_led_est msm_camera_sensor_s5k3h1gx_led_table[] = {
 		{
 		.enable = 1,
 		.led_state = FL_MODE_FLASH_LEVEL2,
@@ -776,25 +776,25 @@ static struct camera_led_est msm_camera_sensor_s5k3h2yx_led_table[] = {
 	},
 };
 
-static struct camera_led_info msm_camera_sensor_s5k3h2yx_led_info = {
+static struct camera_led_info msm_camera_sensor_s5k3h1gx_led_info = {
 	.enable = 1,
 	.low_limit_led_state = FL_MODE_TORCH,
 	.max_led_current_ma = 750,
-	.num_led_est_table = ARRAY_SIZE(msm_camera_sensor_s5k3h2yx_led_table),
+	.num_led_est_table = ARRAY_SIZE(msm_camera_sensor_s5k3h1gx_led_table),
 };
 
-static struct camera_flash_info msm_camera_sensor_s5k3h2yx_flash_info = {
-	.led_info = &msm_camera_sensor_s5k3h2yx_led_info,
-	.led_est_table = msm_camera_sensor_s5k3h2yx_led_table,
+static struct camera_flash_info msm_camera_sensor_s5k3h1gx_flash_info = {
+	.led_info = &msm_camera_sensor_s5k3h1gx_led_info,
+	.led_est_table = msm_camera_sensor_s5k3h1gx_led_table,
 };
 
-static struct camera_flash_cfg msm_camera_sensor_s5k3h2yx_flash_cfg = {
+static struct camera_flash_cfg msm_camera_sensor_s5k3h1gx_flash_cfg = {
 	.low_temp_limit		= 5,
 	.low_cap_limit		= 15,
-	.flash_info             = &msm_camera_sensor_s5k3h2yx_flash_info,
+	.flash_info             = &msm_camera_sensor_s5k3h1gx_flash_info,
 };
 
-static struct msm_camera_sensor_flash_data flash_s5k3h2yx = {
+static struct msm_camera_sensor_flash_data flash_s5k3h1gx = {
 	.flash_type	= MSM_CAMERA_FLASH_LED,
 #ifdef CONFIG_MSM_CAMERA_FLASH
 	.flash_src	= &msm_flash_src,
@@ -802,21 +802,21 @@ static struct msm_camera_sensor_flash_data flash_s5k3h2yx = {
 
 };
 
-static struct msm_camera_sensor_info msm_camera_sensor_s5k3h2yx_data = {
-	.sensor_name	= "s5k3h2yx",
-	.camera_power_on = Pyramid_s5k3h2yx_vreg_on,
-	.camera_power_off = Pyramid_s5k3h2yx_vreg_off,
+static struct msm_camera_sensor_info msm_camera_sensor_s5k3h1gx_data = {
+	.sensor_name	= "s5k3h1gx",
+	.camera_power_on = Pyramid_s5k3h1gx_vreg_on,
+	.camera_power_off = Pyramid_s5k3h1gx_vreg_off,
 	.pdata	= &msm_camera_csi_device_data[0],
-	.flash_data	= &flash_s5k3h2yx,
-	.sensor_platform_info = &sensor_s5k3h2yx_board_info,
+	.flash_data	= &flash_s5k3h1gx,
+	.sensor_platform_info = &sensor_s5k3h1gx_board_info,
 	.gpio_conf = &gpio_conf,
 	.csi_if	= 1,
 	.camera_type = BACK_CAMERA_2D,
-#ifdef CONFIG_S5K3H2YX_ACT
-	.actuator_info = &s5k3h2yx_actuator_info,
+#ifdef CONFIG_s5k3h1gx_ACT
+	.actuator_info = &s5k3h1gx_actuator_info,
 #endif
 	.use_rawchip = RAWCHIP_ENABLE, 
-	.flash_cfg = &msm_camera_sensor_s5k3h2yx_flash_cfg, 
+	.flash_cfg = &msm_camera_sensor_s5k3h1gx_flash_cfg, 
 };
 
 #endif	
@@ -1021,10 +1021,16 @@ static struct msm_camera_sensor_info msm_camera_sensor_mt9v113_data = {
 
 #ifdef CONFIG_I2C
 static struct i2c_board_info msm_camera_boardinfo[] = {
-#ifdef CONFIG_S5K3H2YX
+#ifdef CONFIG_s5k3h1gx
 	{
-	I2C_BOARD_INFO("s5k3h2yx", 0x20 >> 1),
-	.platform_data = &msm_camera_sensor_s5k3h2yx_data,
+	I2C_BOARD_INFO("s5k3h1gx", 0x20 >> 1),
+	.platform_data = &msm_camera_sensor_s5k3h1gx_data,
+	},
+#endif
+#ifdef CONFIG_S5K3H1GX
+	{
+	I2C_BOARD_INFO("s5k3h1gx", 0x20 >> 1),
+	.platform_data = &msm_camera_sensor_s5k3h1gx_data,
 	},
 #endif
 #ifdef CONFIG_MT9V113

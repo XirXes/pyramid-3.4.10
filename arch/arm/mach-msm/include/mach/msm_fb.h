@@ -18,6 +18,7 @@
 #define _MSM_FB_H_
 
 #include <linux/device.h>
+#include <linux/msm_mdp.h>
 
 struct mddi_info;
 
